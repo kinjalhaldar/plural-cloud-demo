@@ -1,5 +1,5 @@
 locals {
-  dns_zone_name = qa.plural.sh # you might also want to register this in the module, or likely register it elsewhere.  Just the name is sufficient.
+  dns_zone_name = "qa.plural.sh"
 }
 
 resource "plural_cluster" "this" {
