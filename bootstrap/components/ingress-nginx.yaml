@@ -1,0 +1,23 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: GlobalService
+metadata:
+  name: ingress-nginx
+  namespace: infra
+spec:
+  tags:
+    role: workload
+  template:
+    name: runtime
+    namespace: plural-runtime # note this for later
+    git:
+      ref: main
+      folder: helm
+    repositoryRef:
+      name: infra # this should point to your `plural up` repo
+      namespace: infra
+    helm:
+      version: 8.3.8
+      chart: ingress-nginx
+      url: https://kubernetes.github.io/ingress-nginx
+      valuesFiles:
+      - ingress-nginx.yaml.liquid

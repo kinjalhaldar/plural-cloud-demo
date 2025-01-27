@@ -1,0 +1,20 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: GlobalService
+metadata:
+  name: cluster-issuer
+  namespace: infra
+spec:
+  cascade:
+    delete: true
+  tags:
+    role: workload
+  template:
+    name: cluster-issuer
+    namespace: cert-manager
+    repositoryRef:
+      kind: GitRepository
+      name: infra
+      namespace: infra
+    git:
+      ref: main
+      folder: services/cluster-issuer # simply source the raw yaml from the services/cluster-issuer folder
