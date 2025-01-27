@@ -1,0 +1,16 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: GlobalService
+metadata:
+  name: rbac
+  namespace: infra
+spec:
+  template:
+    name: rbac
+    namespace: rbac
+    git:
+      ref: main
+      folder: services/rbac
+    repositoryRef:
+      kind: GitRepository
+      name: infra # this should point to your `plural up` repo, and is referencing a GitRepository CRD at `bootstrap/setup.yaml`
+      namespace: infra
