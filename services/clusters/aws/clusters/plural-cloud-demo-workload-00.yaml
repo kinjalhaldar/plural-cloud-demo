@@ -1,0 +1,7 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: Cluster
+metadata:
+  name: plural-cloud-demo-workload-00
+  namespace: infra
+spec:
+  handle: plural-cloud-demo-workload-00
