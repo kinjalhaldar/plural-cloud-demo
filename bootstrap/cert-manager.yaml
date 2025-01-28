@@ -22,3 +22,13 @@ spec:
     kind: Cluster
     name: mgmt
     namespace: infra
+---
+apiVersion: deployments.plural.sh/v1alpha1
+kind: GlobalService
+metadata:
+  name: cert-manager
+  namespace: infra
+spec:
+  serviceRef:
+    name: cert-manager
+    namespace: infra
