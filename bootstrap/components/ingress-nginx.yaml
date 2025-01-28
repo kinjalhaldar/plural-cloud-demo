@@ -16,7 +16,7 @@ spec:
       name: infra # this should point to your `plural up` repo
       namespace: infra
     helm:
-      version: 8.3.8
+      version: x.x.x
       chart: ingress-nginx
       url: https://kubernetes.github.io/ingress-nginx
       valuesFiles:
