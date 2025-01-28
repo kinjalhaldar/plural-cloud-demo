@@ -1,9 +1,0 @@
-apiVersion: deployments.plural.sh/v1alpha1
-kind: GitRepository
-metadata:
-  name: cd-demo
-spec:
-  url: https://github.com/pluralsh/plrl-cd-demo.git
-  scmConnectionRef:
-    name: plural
-    namespace: infra
