@@ -16,7 +16,7 @@ spec:
     values:
       image:
         repository: ghcr.io/pluralsh/plrl-cd-test
-        tag: latest # VERSION
+        tag: 0.1.0 # VERSION
   clusterRef:
     kind: Cluster
     name: plural-cloud-demo-workload-00 # replace this with whatever you might have named your dev cluster
