@@ -1,0 +1,21 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: PrAutomation
+metadata:
+  name: cd-demo-pipeline
+spec:
+  name: cd-demo-pipeline
+  documentation: Updates the cd-demo service along each pipeline stage
+  updates:
+    regexReplacements:
+    - regex: "tag: (.*) # VERSION"
+      file: bootstrap/cd-demo/{{ context.pipeline.stage.name }}.yaml
+      replacement: "tag: {{ context.version }} # VERSION"
+  scmConnectionRef:
+    name: github
+  title: "Updating cd-demo version to {{ context.version }} (stage={{ context.pipeline.stage.name }})"
+  message: "Updating cd-demo version to {{ context.version }} (stage={{ context.pipeline.stage.name }})"
+  identifier: kinjalhaldar/plural-cloud-demo # <---- replace with the slug for your plural up repo
+  configuration:
+  - name: version
+    type: STRING
+    documentation: The version tag to use
