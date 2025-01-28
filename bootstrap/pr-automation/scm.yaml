@@ -4,6 +4,5 @@ kind: ScmConnection
 metadata:
   name: plural
 spec:
-  default: true
   name: plural-cloud
   type: GITHUB
