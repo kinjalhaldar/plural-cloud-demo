@@ -1,0 +1,20 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: airbyte-raw-plural-cloud-demo-workload-00
+  namespace: apps
+spec:
+  namespace: airbyte
+  git:
+    folder: services/apps/airbyte
+    ref: main
+  repositoryRef:
+    kind: GitRepository
+    name: infra
+    namespace: infra
+  configuration:
+    hostname: svc-context-airbyte-test
+  clusterRef:
+    kind: Cluster
+    name: plural-cloud-demo-workload-00
+    namespace: infra

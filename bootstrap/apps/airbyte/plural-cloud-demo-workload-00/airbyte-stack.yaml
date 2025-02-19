@@ -1,0 +1,22 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: InfrastructureStack
+metadata:
+  name: airbyte-plural-cloud-demo-workload-00
+  namespace: apps
+spec:
+  detach: false
+  type: TERRAFORM
+  approval: true
+  manageState: true
+  actor: console@plural.sh
+  git:
+    ref: main
+    folder: terraform/apps/airbyte/plural-cloud-demo-workload-00
+  repositoryRef:
+    name: infra
+    namespace: infra
+  configuration:
+    version: '1.8'
+  clusterRef:
+    name: mgmt
+    namespace: infra
