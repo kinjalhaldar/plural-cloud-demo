@@ -18,7 +18,7 @@ spec:
     namespace: infra
   git:
     folder: setup/catalogs
-    ref: svc-context
+    ref: main
   clusterRef:
     kind: Cluster
     name: mgmt
