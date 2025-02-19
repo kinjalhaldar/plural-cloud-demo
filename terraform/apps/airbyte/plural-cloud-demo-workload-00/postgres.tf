@@ -37,7 +37,7 @@ module "db" {
   backup_retention_period = var.backup_retention_period
 
   monitoring_interval    = "30"
-  monitoring_role_name   = "${var.db_name}-PluralRDSMonitoringRole"
+  monitoring_role_name   = "${substr(var.db_name, 0, 40)}-PluralRDSMonitoringRole"
   create_monitoring_role = true
   apply_immediately      = true 
 
