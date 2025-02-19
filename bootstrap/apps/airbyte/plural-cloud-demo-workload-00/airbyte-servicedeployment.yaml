@@ -1,0 +1,35 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: airbyte-plural-cloud-demo-workload-00
+  namespace: apps
+spec:
+  namespace: airbyte
+  git:
+    folder: helm/airbyte/plural-cloud-demo-workload-00
+    ref: main
+  repositoryRef:
+    kind: GitRepository
+    name: infra
+    namespace: infra
+  helm:
+    version: "1.x.x"
+    chart: airbyte
+    release: airbyte
+    ignoreHooks: false
+    url: https://airbytehq.github.io/helm-charts
+    valuesFiles:
+    - airbyte.yaml.liquid
+  imports:
+  - stackRef:
+      name: airbyte-plural-cloud-demo-workload-00
+      namespace: apps
+  configuration:
+    cluster: plural-cloud-demo-workload-00
+    hostname: svc-context-airbyte-test
+    bucket: service-context-airbyte-test
+    region: us-east-2
+  clusterRef:
+    kind: Cluster
+    name: plural-cloud-demo-workload-00
+    namespace: infra

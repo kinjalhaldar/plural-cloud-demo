@@ -1,0 +1,31 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: airbyte-oauth-proxy-config-plural-cloud-demo-workload-00
+  namespace: apps
+spec:
+  namespace: airbyte
+  git:
+    folder: helm/airbyte/plural-cloud-demo-workload-00
+    ref: main
+  repositoryRef:
+    kind: GitRepository
+    name: infra
+    namespace: infra
+  helm:
+    version: "x.x.x"
+    chart: oidc-config
+    url: https://pluralsh.github.io/module-library
+    valuesFiles:
+    - oauth-proxy-config.yaml.liquid
+  imports:
+  - stackRef:
+      name: airbyte-plural-cloud-demo-workload-00
+      namespace: apps
+  configuration:
+    cluster: plural-cloud-demo-workload-00
+    hostname: svc-context-airbyte-test
+  clusterRef:
+    kind: Cluster
+    name: plural-cloud-demo-workload-00
+    namespace: infra
